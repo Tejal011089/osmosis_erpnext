@@ -24,6 +24,11 @@ def get_data():
 				},
 				{
 					"type": "doctype",
+					"name": "First Inspection Report",
+					"description": _("Inspection Report."),
+				},
+				{
+					"type": "doctype",
 					"name": "Contact",
 					"description": _("All Contacts."),
 				},
@@ -187,6 +192,13 @@ def get_data():
 					"doctype": "Customer",
 					"icon": "icon-bar-chart",
 				},
+				{
+					"type": "report",
+					"is_query_report": True,
+					"name": "Work Order Status",
+					"doctype": "Sales Order",
+					"icon": "icon-bar-chart",
+				}
 			]
 		},
 		{

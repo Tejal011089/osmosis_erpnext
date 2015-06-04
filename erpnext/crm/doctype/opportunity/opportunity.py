@@ -204,6 +204,38 @@ def make_quotation(source_name, target_doc=None):
 
 	return doclist
 
+
+@frappe.whitelist()
+def make_fir(source_name, target_doc=None):
+	def set_missing_values(source, target):
+		fir = frappe.get_doc(target)
+		#quotation.currency = None # set it as default from customer
+		fir.run_method("set_missing_values")
+		#quotation.run_method("calculate_taxes_and_totals")
+
+	doclist = get_mapped_doc("Opportunity", source_name, {
+		"Opportunity": {
+			"doctype": "First Inspection Report",
+			# "field_map": {
+			# 	"enquiry_from": "quotation_to",
+			# 	"enquiry_type": "order_type",
+			# 	"name": "enq_no",
+			# }
+		},
+		# "Opportunity Item": {
+		# 	"doctype": "Quotation Item",
+		# 	"field_map": {
+		# 		"parent": "prevdoc_docname",
+		# 		"parenttype": "prevdoc_doctype",
+		# 		"uom": "stock_uom"
+		# 	},
+		# 	"add_if_empty": True
+		# }
+	}, target_doc, set_missing_values)
+
+	return doclist
+
+
 @frappe.whitelist()
 def set_multiple_status(names, status):
 	names = json.loads(names)

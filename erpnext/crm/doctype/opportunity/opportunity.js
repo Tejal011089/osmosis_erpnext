@@ -65,6 +65,13 @@ erpnext.crm.Opportunity = frappe.ui.form.Controller.extend({
 			method: "erpnext.crm.doctype.opportunity.opportunity.make_quotation",
 			frm: cur_frm
 		})
+	},
+
+	create_fir: function() {
+		frappe.model.open_mapped_doc({
+			method: "erpnext.crm.doctype.opportunity.opportunity.make_fir",
+			frm: cur_frm
+		})
 	}
 });
 
@@ -76,6 +83,9 @@ cur_frm.cscript.refresh = function(doc, cdt, cdn) {
 	if(doc.status!=="Lost") {
 		cur_frm.add_custom_button(__('Create Quotation'),
 			cur_frm.cscript.create_quotation, frappe.boot.doctype_icons["Quotation"],
+			"btn-default");
+		cur_frm.add_custom_button(__('Create First Inspection Report'),
+			cur_frm.cscript.create_fir, frappe.boot.doctype_icons["Quotation"],
 			"btn-default");
 		if(doc.status!=="Quotation")
 			cur_frm.add_custom_button(__('Opportunity Lost'),

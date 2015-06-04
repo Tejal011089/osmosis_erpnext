@@ -5,7 +5,7 @@ app_publisher = "Frappe Technologies Pvt. Ltd. and Contributors"
 app_description = "Open Source Enterprise Resource Planning for Small and Midsized Organizations"
 app_icon = "icon-th"
 app_color = "#e74c3c"
-app_version = "5.0.17"
+app_version = "5.0.16"
 
 error_report_email = "support@erpnext.com"
 
@@ -53,6 +53,8 @@ dump_report_map = "erpnext.startup.report_data_map.data_map"
 before_tests = "erpnext.setup.utils.before_tests"
 
 website_generators = ["Item Group", "Item", "Sales Partner"]
+
+fixtures = ['Custom Field', 'Property Setter']
 
 standard_queries = {
 	"Customer": "erpnext.selling.doctype.customer.customer.get_customer_list"
